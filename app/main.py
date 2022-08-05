@@ -4,6 +4,7 @@ from .OrderServices import OrderIn,OperatingCost
 app = FastAPI()
 
 app.include_router(OrderIn.router)
+app.include_router(OperatingCost.router)
 
 @app.get("/")
 def read_root():
