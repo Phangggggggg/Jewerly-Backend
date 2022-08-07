@@ -1,10 +1,12 @@
 from typing import Union
 from fastapi import FastAPI
+from .MockApi import MockApi
 from .OrderServices import OrderIn,OperatingCost
 app = FastAPI()
 
 app.include_router(OrderIn.router)
 app.include_router(OperatingCost.router)
+app.include_router(MockApi.router)
 
 @app.get("/")
 def read_root():
