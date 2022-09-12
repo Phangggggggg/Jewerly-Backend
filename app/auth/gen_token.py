@@ -15,7 +15,7 @@ ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 def get_user(db, username: str):
     # DONT FORGET TO CHECK IN CASE CANNOT FIND 
-    user = db.collection.find({ 'username': username})
+    user = db.collection.find({'username': username})
     return UserInDB(**user)
     
 def create_access_token(data: dict, expires_delta: Union[timedelta, None] = None):
