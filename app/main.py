@@ -1,13 +1,8 @@
-from typing import Union
 from fastapi import FastAPI
 from .router import user
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.security import OAuth2PasswordBearer
-from fastapi import  FastAPI
-
 
 app = FastAPI()
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 app.add_middleware(
     CORSMiddleware,
