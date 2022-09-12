@@ -1,27 +1,23 @@
-from uuid import UUID
-from pydantic import BaseModel, Field
+from typing import Union
 
-class TokenSchema(BaseModel):
-    access_token: str
-    refresh_token: str
-    
-    
-class TokenPayload(BaseModel):
-    sub: str = None
-    exp: int = None
+from pydantic import BaseModel
 
 
-class UserAuth(BaseModel):
-    email: str = Field(..., description="user email")
-    username: str = Field(..., description="user username")
-    password: str = Field(..., min_length=6, max_length=24, description="user password")
-    
-    
-
-class UserOut(BaseModel):
-    id: UUID
+class User(BaseModel):
     username: str
-
-
-class SystemUser(UserOut):
+    email: str
     password: str
+    
+class UserDisplay(BaseModel):
+    username: str
+    email: str
+    
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+    
+class UserInDB(User):
+    hashed_password: str
+
+class TokenData(BaseModel):
+    username: Union[str, None] = None
